@@ -13,6 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'SiteController@index');
+
+
+Route::group(['prefix'=>'names'],function (){
+    Route::get('/','NamesController@index');
+    Route::get('/full','NamesController@fullName');
 });
+
+Route::group(['prefix'=>'posts'],function (){
+    Route::get('/','PostController@index');
+    Route::get('/one/{id}','PostController@one');
+});
+
+
+
+
