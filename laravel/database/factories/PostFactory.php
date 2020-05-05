@@ -2,7 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Model\Post;
+use App\Models\Post;
 use Faker\Generator as Faker;
 
 $factory->define(Post::class,function (Faker $faker){
@@ -13,5 +13,6 @@ $factory->define(Post::class,function (Faker $faker){
         'is_moderate'=>$faker->boolean,
         'created_at' => now(),
         'updated_at' => now(),
+        'file_id'=>$faker->numberBetween(1,50),
     ];
 });

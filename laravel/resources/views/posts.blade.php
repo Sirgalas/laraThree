@@ -9,7 +9,7 @@
 
                     <div class="col-lg-{{$key==1?6:3}} col-md-12">
                         <div class="img-view">
-                            <a href="{{url('/posts/one',$top->id)}}><img class="img-responsive" src="img/centered-post-{{$key+1}}.jpg" alt=""></a>
+                            <a href="{{url('/posts/one',$top->id)}}"><img class="img-responsive" src="{{$top->file->url}}" alt=""></a>
                         </div>
                         <div class="wrapper-title">
                             <h3><a class="underline" href="{{url('post',$top->id)}}">{{$top->title}}</a></h3>
@@ -30,11 +30,11 @@
                     <div class="img-wrapper">
                         <div class="col-lg-4 col-md-12">
                             <figure class="img-effect">
-                                <img class="img-responsive" src="img/bottom-post-1.jpg" alt="">
+                                <img class="img-responsive" src="{{$post->file->url}}" alt="">
                                 <figcaption>
                                     <h2>{{$post->title}}</h2>
                                     <p>{{$post->desc}}</p>
-                                    <a href="{{url('/posts/one',$top->id)}}">View more</a>
+                                    <a href="{{url('/posts/one',$post->id)}}">View more</a>
                                 </figcaption>
                             </figure>
                         </div>

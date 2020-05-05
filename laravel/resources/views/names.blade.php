@@ -1,4 +1,4 @@
-@extends ('master')
+@extends ('layouts.master',['title'=>'Контакты'])
 
 @section('content')
     <div class="content">

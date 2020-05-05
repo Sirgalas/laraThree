@@ -2,16 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\Post;
+use App\Models\Post;
+use App\Repositories\Interfaces\PostRepositoryInterface;
+use App\Services\PostService;
+use Illuminate\Http\Request;
 
 class SiteController extends Controller
 {
-    public function index()
+
+    public function index(PostRepositoryInterface $repository)
     {
         return view('index',[
-            'tops'=>Post::top()->get(),
-            'bottoms'=>Post::bottom(3)->get(),
-            'headers'=>Post::header()->get()
+            'tops'=>$repository->top(),
+            'bottoms'=>$repository->bottom(3),
+            'headers'=>$repository->header(),
         ]);
     }
 }

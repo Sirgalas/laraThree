@@ -22,9 +22,8 @@ class CreatePostsTable extends Migration
             $table->boolean('is_top')->default(false);
             $table->timestamps();
             $table->integer('user_id')->unsigned();
-            $table->index(['user_id']);
-            $table->foreign('user_id')->references('id')->on('users');
-
+            $table->index('user_id','idx_post_user_id');
+            $table->foreign('user_id','fk_post_to_user')->references('id')->on('users');
         });
     }
 

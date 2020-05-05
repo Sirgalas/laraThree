@@ -11,11 +11,12 @@
                             <p class="col-md-6">The first manifesto of Spatialism</p>
                             <p class="col-md-6">{{$post->created_at}}</p>
                         </div>
+                        <a href="{{url('/posts/form')}}" class="btn btn-default">Создать новый</a>
                     </div>
                     <div class="content-post">
                         <p>{{$post->desc}}</p>
                         <figure class="img-post">
-                            <img class="img-responsive" src="img/manifesto-1.jpg" alt="">
+                            <img class="img-responsive" src="{{$post->file->url}}" alt="">
                             <figcaption>Lucio Fontana, Concetto spaziale, Attese</figcaption>
                         </figure>
                     </div>

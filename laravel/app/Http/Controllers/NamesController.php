@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Model\Name;
+use App\Models\Name;
 
 class NamesController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('names',['names'=>Name::all()]);
+        return view('names',[
+            'names'=>Name::all(),
+            'request'=>$request
+        ]);
     }
 
     public function fullName()

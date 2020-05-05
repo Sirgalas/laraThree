@@ -5,7 +5,7 @@
             <div class="img-wrapper">
                 <div class="col-lg-{{$key==1?4:8}} col-md-12">
                     <figure class="img-effect">
-                        <img class="img-responsive" src="img/featured-post-{{$key+1}}.jpg" alt="">
+                        <img class="img-responsive" src="{{$header->file->url}}" alt="">
                         <figcaption>
                             <h2>Kandinsky, W.</h2>
                             <p>{{$header->title}}</p>
@@ -15,7 +15,6 @@
                 </div>
             </div>
             @endforeach
-
         </div>
     </div>
 </header>

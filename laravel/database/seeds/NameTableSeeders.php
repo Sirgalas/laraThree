@@ -1,6 +1,6 @@
 <?php
 use Illuminate\Database\Seeder;
-use App\Model\Name;
+use App\Models\Name;
 
 class NameTableSeeders extends Seeder
 {

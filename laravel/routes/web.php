@@ -24,6 +24,9 @@ Route::group(['prefix'=>'names'],function (){
 Route::group(['prefix'=>'posts'],function (){
     Route::get('/','PostController@index');
     Route::get('/one/{id}','PostController@one');
+    Route::get('/create','PostController@create');
+    Route::post('/create','PostController@create');
+    Route::get('/form','PostController@form');
 });
 
 
