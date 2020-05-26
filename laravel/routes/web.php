@@ -13,20 +13,34 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'SiteController@index');
+Route::get('/', 'Frontend\SiteController@index');
 
 
-Route::group(['prefix'=>'names'],function (){
-    Route::get('/','NamesController@index');
+Route::group(['prefix'=>'names','namespace'=>'Frontend'],function (){
+    Route::get('/','NamesController@index')->name('contacts');
     Route::get('/full','NamesController@fullName');
 });
 
-Route::group(['prefix'=>'posts'],function (){
-    Route::get('/','PostController@index');
+Route::group(['prefix'=>'posts','namespace'=>'Frontend'],function (){
+    Route::get('/','PostController@index')->name('posts');
     Route::get('/one/{id}','PostController@one');
-    Route::get('/create','PostController@create');
-    Route::post('/create','PostController@create');
+    Route::post('/create','PostController@create')->name('post_create');
     Route::get('/form','PostController@form');
+    Route::post('/form','PostController@form');
+});
+
+Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
+    Route::get('/','SiteController@index')->name('admin');
+    Route::group(['prefix'=>'post'],function(){
+        Route::get('/','PostController@index')->name('posts');
+        Route::get('/create','PostController@create')->name('post_create');
+        Route::post('/store','PostController@store')->name('post_store');
+        Route::get('/show/{id}','PostController@show')->name('post_show');
+        Route::get('/update/{id}','PostController@edit')->name('post_edit');
+        Route::put('/update/{id}','PostController@update')->name('post_update');
+        Route::delete('delete/{id}','PostController@delete')->name('post_delete');
+    });
+    /*Route::resource('post','PostController');*/
 });
 
 

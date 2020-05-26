@@ -4,23 +4,30 @@
 namespace App\Repositories;
 
 
+use App\Exceptions\NotFindException;
 use App\Exceptions\NotSaveException;
 use App\Models\Post;
 use App\Repositories\Interfaces\PostRepositoryInterface;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\DB;
 
 class PostRepository implements PostRepositoryInterface
 {
-    public function one(int  $id)
+    public function one(int  $id):Post
     {
+        if(!$post=Post::find($id)){
+            throw new NotFindException('not find');
+        }
         return Post::find($id);
     }
 
-    public function all()
+    public function all():Collection
     {
         return Post::all();
     }
 
-    public function allModeration()
+
+    public function allModeration():Collection
     {
         return Post::where('is_moderate',true)->get();
     }
@@ -56,5 +63,14 @@ class PostRepository implements PostRepositoryInterface
     public function header()
     {
         return Post::where('is_header',true)->where('is_moderate',true)->inRandomOrder()->take(2)->get();
+    }
+
+    public function count($where=[]):int
+    {
+        $post=DB::table(Post::tableName());
+        if(!empty($where)){
+            $post->where($where);
+        }
+        return $post->count();
     }
 }

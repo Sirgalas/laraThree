@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Class File
@@ -32,7 +33,7 @@ class File extends Model
         return static::create([
             'path'=>self::PATH,
             'extension'=>$file->getClientOriginalExtension(),
-            'name'=>md5($file->getClientOriginalExtension().time()),
+            'name'=>$file->hashName(),
             'slug'=>$file->getClientOriginalName()
         ]);
 
@@ -53,6 +54,6 @@ class File extends Model
         if(empty($this->extension)){
             return $this->path;
         }
-        return $this->path.DIRECTORY_SEPARATOR.$this->name.'.'.$this->extension;
+        return Storage::disk('public')->url(self::PATH.DIRECTORY_SEPARATOR.$this->name);
     }
 }

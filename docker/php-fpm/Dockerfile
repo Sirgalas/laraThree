@@ -51,6 +51,8 @@ RUN pecl install xdebug-2.6.1
 RUN apk del --no-cache --no-network --purge .make-ext-deps
 RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql
 RUN docker-php-ext-install pdo_pgsql pgsql
+
+RUN docker-php-ext-install php-zip
 RUN rm -rf /usr/src/* /tmp/*
 
 

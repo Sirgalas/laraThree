@@ -22,7 +22,7 @@ build: # build all dockerfile, if not built yet
 	@docker-compose -f ${DOCKER_CONFIG} build
 
 
-connect_app: # app command line
+connect_app : # app command line
 	@docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/laravel app sh
 
 connect_node: # node command line

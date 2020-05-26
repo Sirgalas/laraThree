@@ -5,14 +5,15 @@ namespace App\Repositories\Interfaces;
 
 
 use App\Models\Post;
+use Illuminate\Database\Eloquent\Collection;
 
 interface PostRepositoryInterface
 {
-    public function one(int $id);
+    public function one(int $id):Post;
 
-    public function all();
+    public function all():Collection;
 
-    public function allModeration();
+    public function allModeration():Collection;
 
     public function save(Post $post);
 

@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $second_name
  * @property string $family
  *
- * @property string $fullNAme
+ * @property string $fullName
  */
 class  Name extends Model
 {
@@ -19,6 +19,11 @@ class  Name extends Model
     public function getFullNameAttribute()
     {
         return $this->first_name.' '.$this->second_name.' '.$this->family;
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
 

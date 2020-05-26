@@ -2,9 +2,13 @@
 
 namespace App\Models;
 
+use App\Http\Requests\PostRequest;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\File;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Http\Request;
+use App\Models\Name;
+
 
 /**
  * Class Post
@@ -18,12 +22,13 @@ use Illuminate\Http\Request;
  * @property string $updated_at
  *
  * @property File $file
+ * @property User $user
  */
 class Post extends Model
 {
     protected $guarded = [];
 
-    public static function added(Request $request, int $fileId=null)
+    public static function added(PostRequest $request, int $fileId=null)
     {
         return static::create([
             'title'=>$request->title,
@@ -35,9 +40,24 @@ class Post extends Model
 
     }
 
+    public function user():BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 
-    public function file()
+
+    public function file():BelongsTo
     {
         return $this->belongsTo(File::class);
+    }
+
+    public function author()
+    {
+        return $this->hasOneThrough(Name::class,User::class,'id','user_id');
+    }
+
+    public static function tableName()
+    {
+        return 'posts';
     }
 }
