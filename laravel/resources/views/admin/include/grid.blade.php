@@ -30,8 +30,8 @@
                     <td>{{$value->$name}}</td>
             @endforeach
             <td>
-                <a href="{{route('post.edit',$value->id)}}"><span class="glyphicon glyphicon-pencil"></span></a>
-                <a href="{{route('post.show',$value->id)}}"><span class="glyphicon glyphicon-eye-open"></span></a>
+                <a href="{{route('post_edit',$value->id)}}"><span class="glyphicon glyphicon-pencil"></span></a>
+                <a href="{{route('post_show',$value->id)}}"><span class="glyphicon glyphicon-eye-open"></span></a>
                 <a href="{{url('admin/post/remove',$value->id)}}"><span class="glyphicon glyphicon-trash"></span></a>
             </td>
         </tr>

@@ -25,12 +25,18 @@ Route::group(['prefix'=>'posts','namespace'=>'Frontend'],function (){
     Route::get('/','PostController@index')->name('posts');
     Route::get('/one/{id}','PostController@one');
     Route::post('/create','PostController@create')->name('post_create');
-    Route::get('/form','PostController@form');
-    Route::post('/form','PostController@form');
+    Route::get('/form','PostController@form')->middleware('auth');
+    Route::post('/form','PostController@form')->middleware('auth');
 });
 
 Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
     Route::get('/','SiteController@index')->name('admin');
+    Route::get('/change/{params}',function ($params) {
+        if (in_array($params, \Config::get('app.locales'))) {
+            session(['locale'=>$params]);
+        }
+        return redirect()->back();
+    })->name('change');
     Route::group(['prefix'=>'post'],function(){
         Route::get('/','PostController@index')->name('posts');
         Route::get('/create','PostController@create')->name('post_create');
@@ -43,6 +49,6 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
     /*Route::resource('post','PostController');*/
 });
 
+Auth::routes();
 
-
-
+Route::get('/home', 'HomeController@index')->name('home');

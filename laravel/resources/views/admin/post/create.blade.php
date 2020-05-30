@@ -1,7 +1,7 @@
 @extends('admin.layouts.main',['title'=>'Admin'])
 @section('breadcrumb')
     <section class="content-header">
-        <h1>@lang('admin.Post')</h1>
+        <h1>@lang('admin.create.Post')</h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
             <li class="active">Dashboard</li>

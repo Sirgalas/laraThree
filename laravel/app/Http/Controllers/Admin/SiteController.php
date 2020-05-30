@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Services\PostService;
 use App\Services\UserService;
+use Illuminate\Support\Facades\App;
 
 class SiteController extends Controller
 {
@@ -26,4 +27,6 @@ class SiteController extends Controller
                 'userCount'=>$this->userService->repository->count()
             ]);
     }
+
+
 }

@@ -1,3 +1,7 @@
+@php
+use Illuminate\Support\Facades\App;
+@endphp
+
 <header class="main-header">
 
     <!-- Logo -->
@@ -17,6 +21,9 @@
         <!-- Navbar Right Menu -->
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
+                <li class="change-locale">
+                    <a href="{{route('change',__('admin.locale'))}}">@lang('Change')</a>
+                </li>
                 <!-- Messages: style can be found in dropdown.less-->
                 <li class="dropdown messages-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">

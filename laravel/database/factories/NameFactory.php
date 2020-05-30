@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(Name::class,function (Faker $faker){
    return [
        'first_name'=>$faker->firstName,
-        'second_name'=>$faker->firstName('male'),
+        'second_name'=>$faker->middleName,
        'family'=>$faker->lastName,
        'user_id'=>$faker->unique()->numberBetween(1,50),
        'created_at' => now(),
