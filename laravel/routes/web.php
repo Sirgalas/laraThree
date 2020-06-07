@@ -49,6 +49,6 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
     /*Route::resource('post','PostController');*/
 });
 
-Auth::routes();
+\Illuminate\Support\Facades\Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -23,10 +23,10 @@ class CreateUserRolesTable extends Migration
 
         DB::table('roles')->insert(
             [
-                ['name'=>'admin','created_at'=>'now()','updated_at'=>'now()'],
-                ['name'=>'moderator','created_at'=>'now()','updated_at'=>'now()'],
-                ['name'=>'author','created_at'=>'now()','updated_at'=>'now()'],
-                ['name'=>'user','created_at'=>'now()','updated_at'=>'now()']
+                ['name'=>'admin','created_at'=>'now()','updated_at'=>'now()','key'=>'admin'],
+                ['name'=>'moderator','created_at'=>'now()','updated_at'=>'now()','key'=>'moderator'],
+                ['name'=>'author','created_at'=>'now()','updated_at'=>'now()','key'=>'author'],
+                ['name'=>'user','created_at'=>'now()','updated_at'=>'now()','key'=>'user']
             ]
         );
 

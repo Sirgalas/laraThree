@@ -53,7 +53,7 @@ class PostRepository implements PostRepositoryInterface
 
     public function bottom(int $take=null)
     {
-        $query= Post::where('is_moderate',true)->where('is_top',false)->where('is_header',false)->inRandomOrder();
+        $query= Post::where('is_moderate',true)->where('is_top',false)->where('is_header',false)->paginate(9);
         if($take){
             $query->take($take);
         }

@@ -11,7 +11,9 @@
                             <p class="col-md-6">The first manifesto of Spatialism</p>
                             <p class="col-md-6">{{$post->created_at}}</p>
                         </div>
-                        <a href="{{url('/posts/form')}}" class="btn btn-default">Создать новый</a>
+                        @role('author'))
+                            <a href="{{url('/posts/form')}}" class="btn btn-default">Создать новый</a>
+                         @endrole
                     </div>
                     <div class="content-post">
                         <p>{{$post->desc}}</p>

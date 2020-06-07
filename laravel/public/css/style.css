@@ -1409,3 +1409,26 @@ sup {
 .return-wrapper {
     margin: 50px 0;
 }
+
+nav.pagination_block{
+    text-align: center;
+}
+nav.pagination_block ul li{
+    background: red;
+}
+nav.pagination_block ul li:first-child span,nav.pagination_block ul li:first-child a,nav.pagination_block ul li:last-child a,nav.pagination_block ul li:last-child stan{
+    border-radius: 0;
+    border-color: #696969;
+}
+nav.pagination_block ul li .page-link{
+    border-radius: 0;
+    color: #696969;
+    border-color: #696969;
+}
+nav.pagination_block ul li.active .page-link{
+    color: #000;
+    background: #fff;
+}
+nav.pagination_block{
+    text-align: center;
+}

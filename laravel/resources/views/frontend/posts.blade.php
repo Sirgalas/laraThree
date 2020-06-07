@@ -1,6 +1,7 @@
 @extends ('frontend.layouts.master',['title'=>'Блог'])
 @include('frontend.include.home_header')
 @section('content')
+
     <!-- CENTERED POSTS -->
     <section id="centered-posts" class="centered-posts">
         <div class="container">
@@ -51,5 +52,6 @@
             </div>
         </div>
     </section>
+    {{$posts->links('frontend.include.pagination')}}
     <!-- / BOTTOM POSTS -->
 @endsection

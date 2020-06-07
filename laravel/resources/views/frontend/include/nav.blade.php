@@ -14,6 +14,12 @@
                 <li {{request()->is('/')?"class=active":''}}> <a href="{{ url('/') }}">Home</a> </li>
                 <li {{request()->is('posts')?"class=active":''}}><a href="{{ url('/posts')}}">Blog</a></li>
                 <li {{request()->is('names')?"class=active":''}}><a href="{{ url('/names')}}">Contact</a></li>
+                @if(!Auth::check())
+                    <li><a href="{{url('/login')}}">Log in</a> </li>
+                    <li><a href="{{url('/register')}}">Sig in</a> </li>
+                @else
+                    <li><a href='#'>{{(Auth::user())->fullName}}"</a></li>
+                @endif
                 <li>
                     <form role="search" method="get" class="search-form">
                         <label> <input type="search" class="search-field" placeholder="Search" value="" name="s"></label>

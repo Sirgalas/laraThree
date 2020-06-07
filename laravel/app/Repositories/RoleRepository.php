@@ -6,6 +6,8 @@ namespace App\Repositories;
 
 use App\Exceptions\NotSaveException;
 use App\Models\Role;
+use App\Models\User;
+use App\Models\UserRole;
 use App\Repositories\Interfaces\RoleRepositoryInterface;
 
 class RoleRepository implements RoleRepositoryInterface
@@ -35,5 +37,12 @@ class RoleRepository implements RoleRepositoryInterface
     {
         $role=$this->one($id);
         $role->delete();
+    }
+
+    public function addRoles(User $user,int $roleId=1)
+    {
+        $role=$this->one($roleId);
+        $userRole=new UserRole(['user_id'=>$user->id,'role_id'=>$roleId]);
+        $userRole->save();
     }
 }

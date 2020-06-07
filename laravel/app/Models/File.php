@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\Storage;
 
 /**
  * Class File
- * @package App\Models
  *
+ * @package App\Models
  * @property integer $id
  * @property string $path
  * @property string $extension
@@ -17,8 +17,19 @@ use Illuminate\Support\Facades\Storage;
  * @property string $slug
  * @property string $created_at
  * @property string $updated_at
- *
  * @property string $url
+ * @property-read \App\Models\Post|null $post
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\File newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\File newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\File query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\File whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\File whereExtension($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\File whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\File whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\File wherePath($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\File whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\File whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 class File extends Model
 {

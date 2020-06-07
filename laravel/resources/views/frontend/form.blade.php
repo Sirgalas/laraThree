@@ -38,7 +38,7 @@
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-12 control-group">
                                 <div class="controls">
-                                    {{Form::select('user_id',$users,$post->user_id,['class'=>"form-control-contact-page","required"=>true, 'data-validation-required-message'=>"Please enter your user_id"])}}
+                                    {{Form::hidden('user_id',Auth::user()->id)}}
                                 </div>
                             </div>
 
