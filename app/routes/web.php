@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('invoices/new','InvoicesController@create')->name('invoices.create')->middleware('auth');
+
+Route::get('login','LoginController@showLoginForm')->name('login');

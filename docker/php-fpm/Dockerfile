@@ -52,7 +52,14 @@ RUN apk del --no-cache --no-network --purge .make-ext-deps
 RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql
 RUN docker-php-ext-install pdo_pgsql pgsql
 
-RUN docker-php-ext-install php-zip
+
+RUN set -xe \
+    	&& apk add --no-cache \
+        libzip-dev \
+        zip \
+  && docker-php-ext-configure zip --with-libzip \
+  && docker-php-ext-install zip
+
 RUN rm -rf /usr/src/* /tmp/*
 
 
@@ -66,7 +73,6 @@ RUN rm -rf /usr/src/* /tmp/*
 #
 RUN set -xe \
 		&& apk add --no-cache \
-			zip \
 			supervisor
 
 

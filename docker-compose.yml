@@ -4,12 +4,12 @@ services:
   node:
     build: docker/nodejs
     depends_on:
-      - app
+      - php-fpm
     volumes:
       - "./:/www"
     networks:
       - laravel
-  app:
+  php-fpm:
     build: docker/php-fpm
     depends_on:
       - db
@@ -26,10 +26,10 @@ services:
   nginx:
     image: nginx:1.16-alpine
     depends_on:
-      - app
+      - php-fpm
     ports:
-      - "8090:80"
-      - "8043:443"
+      - "8100:80"
+      - "8143:443"
     volumes:
       - "./:/www"
       - "./docker/nginx/conf.d:/etc/nginx/conf.d"
@@ -45,16 +45,29 @@ services:
       - POSTGRES_USER=${DOCKER_USERNAME}
       - POSTGRES_PASSWORD=${DOCKER_PASSWORD}
     ports:
-      - "8091:5432"
+      - "8101:5432"
+    networks:
+      - laravel
+
+  test-db:
+    image: postgres:12-alpine
+    volumes:
+      - ./docker/postgres/postgres-test:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=${DOCKER_DATABASE_TEST}
+      - POSTGRES_USER=${DOCKER_USERNAME}
+      - POSTGRES_PASSWORD=${DOCKER_PASSWORD}
+    ports:
+      - "8102:5432"
     networks:
       - laravel
 
   mailhog:
     image: mailhog/mailhog:latest
     ports:
-      - "8092:8025"
+      - "8103:8025"
     depends_on:
-      - app
+      - php-fpm
     networks:
       - laravel
 
